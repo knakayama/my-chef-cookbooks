@@ -85,7 +85,7 @@ bash "create private key" do
             -keyout /etc/pki/tls/private/#{node["DOMAIN"]}.key
         chmod 00400 /etc/pki/tls/private/#{node["DOMAIN"]}.key
     EOT
-    not_if { File.directory?("/etc/pki/tls/ssl.key") }
+    not_if { File.exist?("/etc/pki/tls/private/#{node['DOMAIN']}.key") }
 end
 
 service "httpd" do
