@@ -19,7 +19,6 @@ end
 
 %w{
     zabbix-server-mysql
-    zabbix
     zabbix-server
 }.each do |pkg|
     package pkg do
@@ -34,7 +33,7 @@ bash "create zabbix tables" do
     code <<-EOT
         cat schema.sql images.sql data.sql | mysql -uzabbix --password='#{node['ZABBIX_PASSWORD']}' zabbix
     EOT
-    not_if "mysql -uroot -D zabbix -e 'show tables'"
+    not_if { File.exist?("/var/lib/mysql/zabbix/maintenances") }
 end
 
 template "/etc/zabbix/zabbix_server.conf" do
@@ -52,7 +51,6 @@ end
 
 %w{
     zabbix-web-mysql
-    zabbix-web
     mod24_ssl
 }.each do |pkg|
     package pkg do
