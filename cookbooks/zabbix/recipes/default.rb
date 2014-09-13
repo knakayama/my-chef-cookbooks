@@ -33,7 +33,7 @@ bash "create zabbix tables" do
     code <<-EOT
         cat schema.sql images.sql data.sql | mysql -uzabbix --password='#{node['ZABBIX_PASSWORD']}' zabbix
     EOT
-    not_if { File.exist?("/var/lib/mysql/zabbix/maintenances") }
+    not_if { File.exist?("/var/lib/mysql/zabbix/maintenances.frm") }
 end
 
 template "/etc/zabbix/zabbix_server.conf" do
