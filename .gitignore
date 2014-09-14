@@ -1,3 +1,5 @@
-Gemfile.lock
+.chef
 .bundle
+Gemfile.lock
+Berksfile.lock
 
