@@ -2,14 +2,10 @@
 # Cookbook Name:: zabbix
 # Recipe:: default
 #
-# Copyright 2014, YOUR_COMPANY_NAME
-#
-# All rights reserved - Do Not Redistribute
-#
 
 # add zabbix 2.2 yum repository
 remote_file "#{Chef::Config[:file_cache_path]}/#{node['zabbix']['repo-name']}" do
-   source "#{node['zabbix']['repo-url']}"
+   source {node['zabbix']['repo-url']}
 end
 
 rpm_package "add zabbix repo" do
