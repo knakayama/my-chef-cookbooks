@@ -74,7 +74,7 @@ mail_owner = postfix
 #
 #myhostname = host.domain.tld
 #myhostname = virtual.domain.tld
-myhostname = <%= node["HOSTNAME"] %>
+myhostname = <%= node[:fqdn] %>
 
 # The mydomain parameter specifies the local internet domain name.
 # The default is to use $myhostname minus the first component.
@@ -82,7 +82,7 @@ myhostname = <%= node["HOSTNAME"] %>
 # parameters.
 #
 #mydomain = domain.tld
-mydomain = <%= node["DOMAIN"] %>
+mydomain = <%= node[:domain] %>
 
 # SENDING MAIL
 #
