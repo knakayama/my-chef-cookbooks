@@ -3,4 +3,5 @@
 Gemfile.lock
 Berksfile.lock
 cookbooks/test-cookbook
+/roles/
 
