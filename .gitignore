@@ -2,4 +2,5 @@
 .bundle
 Gemfile.lock
 Berksfile.lock
+cookbooks/test-cookbook
 
