@@ -1,5 +1,5 @@
-zabbix Cookbook
-===============
+zabbix-server Cookbook
+======================
 
 My zabbix cookbook
 

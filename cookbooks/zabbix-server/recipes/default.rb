@@ -1,11 +1,11 @@
 #
-# Cookbook Name:: zabbix
+# Cookbook Name:: zabbix-server
 # Recipe:: default
 #
 
 # add zabbix 2.2 yum repository
 remote_file "#{Chef::Config[:file_cache_path]}/#{node['zabbix']['repo-name']}" do
-   source {node['zabbix']['repo-url']}
+   source node['zabbix']['repo-url']
 end
 
 rpm_package "add zabbix repo" do
@@ -41,8 +41,8 @@ template "/etc/zabbix/zabbix_server.conf" do
 end
 
 service "zabbix-server" do
-    action [:enable, :start]
     supports :status => true, :restart => true, :reload => true
+    action [:enable, :start]
 end
 
 %w{
