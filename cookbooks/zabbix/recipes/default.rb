@@ -76,12 +76,12 @@ bash "create private key" do
         openssl req -new -newkey rsa:2048 -sha1 -x509 -nodes \
             -set_serial 1 \
             -days 365 \
-            -subj "/C=JP/ST=Tokyo/L=Tokyo City/CN=#{node["DOMAIN"]}" \
-            -out /etc/pki/tls/certs/#{node["DOMAIN"]}.crt \
-            -keyout /etc/pki/tls/private/#{node["DOMAIN"]}.key
-        chmod 00400 /etc/pki/tls/private/#{node["DOMAIN"]}.key
+            -subj "/C=JP/ST=Tokyo/L=Tokyo City/CN=#{node[:fqdn]}" \
+            -out /etc/pki/tls/certs/#{node[:fqdn]}.crt \
+            -keyout /etc/pki/tls/private/#{node[:fqdn]}.key
+        chmod 00400 /etc/pki/tls/private/#{node[:fqdn]}.key
     EOT
-    not_if { File.exist?("/etc/pki/tls/private/#{node['DOMAIN']}.key") }
+    not_if { File.exist?("/etc/pki/tls/private/#{node[:fqdn]}.key") }
 end
 
 service "httpd" do
