@@ -324,6 +324,11 @@ AddDefaultCharset UTF-8
     MIMEMagicFile conf/magic
 </IfModule>
 
+<IfModule rewrite_module>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+</IfModule>
 #
 # Customizable error responses come in three flavors:
 # 1) plain text 2) local redirects 3) external redirects
