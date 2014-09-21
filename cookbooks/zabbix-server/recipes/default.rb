@@ -84,6 +84,14 @@ bash "create private key" do
     not_if { File.exist?("/etc/pki/tls/private/#{node[:fqdn]}.key") }
 end
 
+template "/etc/zabbix/web/zabbix.conf.php" do
+    source "zabbix.conf.php.erb"
+    owner "apache"
+    group "apache"
+    mode 00644
+    notifies :restart, "service[httpd]"
+end
+
 service "httpd" do
     action [:enable, :start]
     supports :status => true, :restart => true, :reload => true
