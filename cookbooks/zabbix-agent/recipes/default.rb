@@ -26,6 +26,14 @@ template '/etc/zabbix/zabbix_agentd.conf' do
     notifies :restart, 'service[zabbix-agent]'
 end
 
+template "/etc/zabbix/zabbix_agentd.d/userparameter_mysql.conf" do
+    source "userparameter_mysql.conf.erb"
+    owner "root"
+    group "root"
+    mode 00644
+    notifies :restart, "service[zabbix-agent]"
+end
+
 service 'zabbix-agent' do
     supports :status => true, :restart => true, :reload => true
     action [:enable, :start]
