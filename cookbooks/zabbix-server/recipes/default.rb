@@ -32,6 +32,27 @@ bash "create zabbix tables" do
     not_if { File.exist?("/var/lib/mysql/zabbix/maintenances.frm") }
 end
 
+%w{
+    events
+    history
+    history_log
+    history_str
+    history_str_sync
+    history_sync
+    history_text
+    history_uint
+    history_uint_sync
+}.each do |table|
+    bash "change #{table} property to use Barracuda compression" do
+        user "ec2-user"
+        group "ec2-user"
+        code <<-EOT
+            mysql -uroot -D zabbix -e "ALTER TABLE #{table} ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=8"
+        EOT
+        not_if "mysql -uroot -D zabbix -e 'SHOW CREATE TABLE #{table}\\G' | grep -qF 'ROW_FORMAT=COMPRESSED'"
+    end
+end
+
 template "/etc/zabbix/zabbix_server.conf" do
     source "zabbix_server.conf.erb"
     owner "root"
