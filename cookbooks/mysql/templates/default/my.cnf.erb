@@ -12,8 +12,9 @@ character-set-server=utf8
 skip-character-set-client-handshake
 
 innodb_file_per_table
-innodb_buffer_pool_size=64M
-innodb_log_file_size=16M
+# 80% size of physical memory  is best?
+innodb_buffer_pool_size=<%= #{(node[:memory][:total].to_i / 1000 * 0.4).to_i} %>M
+innodb_log_file_size=<%= #{(node[:memory][:total].to_i / 1000 * 0.1).to_i} %>M
 innodb_log_files_in_group=2
 
 [mysqld_safe]
