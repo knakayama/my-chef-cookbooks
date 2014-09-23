@@ -305,6 +305,7 @@ SNMPTrapperFile=/var/log/snmptt/snmptt.log
 # Range: 0-1000000
 # Default:
 # MaxHousekeeperDelete=500
+MaxHousekeeperDelete=1000
 
 ### Option: SenderFrequency
 #	How often Zabbix will try to send unsent alerts (in seconds).
@@ -322,6 +323,7 @@ SNMPTrapperFile=/var/log/snmptt/snmptt.log
 # Range: 128K-8G
 # Default:
 # CacheSize=8M
+CacheSize=32M
 
 ### Option: CacheUpdateFrequency
 #	How often Zabbix will perform update of configuration cache, in seconds.
@@ -347,6 +349,7 @@ SNMPTrapperFile=/var/log/snmptt/snmptt.log
 # Range: 128K-2G
 # Default:
 # HistoryCacheSize=8M
+HistoryCacheSize=64M
 
 ### Option: TrendCacheSize
 #	Size of trend cache, in bytes.
@@ -356,6 +359,7 @@ SNMPTrapperFile=/var/log/snmptt/snmptt.log
 # Range: 128K-2G
 # Default:
 # TrendCacheSize=4M
+TrendCacheSize=64M
 
 ### Option: HistoryTextCacheSize
 #	Size of text history cache, in bytes.
@@ -365,6 +369,7 @@ SNMPTrapperFile=/var/log/snmptt/snmptt.log
 # Range: 128K-2G
 # Default:
 # HistoryTextCacheSize=16M
+HistoryTextCacheSize=32M
 
 ### Option: ValueCacheSize
 #	Size of history value cache, in bytes.
