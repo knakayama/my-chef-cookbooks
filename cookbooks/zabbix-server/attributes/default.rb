@@ -1,4 +1,11 @@
 default["zabbix"]["version"]   = "2.2"
 default["zabbix"]["repo-name"] = "zabbix-release-#{node['zabbix']['version']}-1.el6.noarch.rpm"
 default["zabbix"]["repo-url"]  = "http://repo.zabbix.com/zabbix/#{node['zabbix']['version']}/rhel/6/x86_64/#{node['zabbix']['repo-name']}"
+default["zabbix-server"]["user"] = "ec2-user"
+default["zabbix-server"]["group"] = "ec2-user"
+default["zabbix-server"]["rbenv"] = "sstephenson/rbenv"
+default["zabbix-server"]["ruby-build"] = "sstephenson/ruby-build"
+default["zabbix-server"]["rbenv-gem-rehash"] = "sstephenson/rbenv-gem-rehash"
+default["zabbix-server"]["my-zabbix-settings"] = "knakayama/my-zabbix-settings"
+default["zabbix-server"]["ruby-version"] = "1.9.3-p547"
 
