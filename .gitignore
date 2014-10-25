@@ -2,7 +2,7 @@
 .bundle
 Gemfile.lock
 Berksfile.lock
-cookbooks/test-cookbook
+site-cookbooks/test-cookbook
 /roles/
 /nodes/
 
