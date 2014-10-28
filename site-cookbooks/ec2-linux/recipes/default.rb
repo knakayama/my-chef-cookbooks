@@ -2,10 +2,6 @@
 # Cookbook Name:: aws-linux-common
 # Recipe:: default
 #
-# Copyright 2014, YOUR_COMPANY_NAME
-#
-# All rights reserved - Do Not Redistribute
-#
 
 service "sendmail" do
     action [:stop, :disable]
