@@ -81,10 +81,10 @@ LogFileSize=0
 # Mandatory: no
 # Default:
 # Server=
-<% if node[:hostname].include?('zabbix') %>
+<% if node[:hostname].include?("zabbix") %>
 Server=127.0.0.1
 <% else %>
-Server=<%= node['zabbix']['ipaddress'] %>
+Server=<%= node["zabbix"]["host_name"] %>
 <% end %>
 
 ### Option: ListenPort
